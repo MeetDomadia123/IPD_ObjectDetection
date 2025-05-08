@@ -1,24 +1,19 @@
-export const drawRect = (detections, ctx) =>{
-  // Loop through each prediction
-  detections.forEach(prediction => {
+export const drawRect = (detections, ctx) => {
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    // Extract boxes and classes
-    const [x, y, width, height] = prediction['bbox']; 
-    const text = prediction['class']; 
+  detections.forEach((prediction) => {
+    const [x, y, width, height] = prediction['bbox'];
+    const text = prediction['class'];
 
-    console.log(text);
-    
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 2;
+    ctx.fillStyle = 'red';
+    ctx.font = '18px Arial';
 
-    // Set styling
-    // const color = Math.floor(Math.random()*16777215).toString(16);
-    ctx.strokeStyle = '#ffffff'
-    ctx.font = '23px Arial';
-
-    // Draw rectangles and text
-    ctx.beginPath();   
-    ctx.fillStyle = '#ffffff'
-    ctx.fillText(text, x, y);
-    ctx.rect(x, y, width, height); 
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
     ctx.stroke();
+
+    ctx.fillText(text, x, y > 10 ? y - 5 : 10);
   });
-}
+};

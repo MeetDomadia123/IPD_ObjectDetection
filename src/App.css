@@ -1,38 +1,71 @@
+/* General styles for the app */
 .App {
-  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1E1E2F; /* Softer dark background */
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Sidebar styles */
+.sidebar {
+  width: 220px;
+  background-color: #111827; /* Tailwind's slate-900 */
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  border-right: 1px solid #2D2F40;
 }
 
-.App-link {
-  color: #61dafb;
+/* Button styles */
+button {
+  margin-bottom: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background-color: #2563EB; /* Blue-600 */
+  color: #F9FAFB;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Hover effect for buttons */
+button:hover:enabled {
+  background-color: #1D4ED8; /* Blue-700 */
+  transform: scale(1.08);
+}
+
+/* Disabled button styles */
+button:disabled {
+  background-color: #6B7280; /* Gray-500 */
+  color: #D1D5DB; /* Lighter text */
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Main content area */
+.main-content {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F3F4F6; /* Light gray background */
+}
+
+/* Webcam and canvas container */
+.webcam-container {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  margin: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
