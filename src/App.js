@@ -4,7 +4,7 @@ import * as cocossd from "@tensorflow-models/coco-ssd";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import "./App.css";
-import { drawRect } from "./utilities";
+import { drawRect,setSpeakingAllowed } from "./utilities";
 
 // Set TensorFlow backend
 tf.setBackend("webgl").then(() => {
@@ -45,13 +45,15 @@ function App() {
 
   const startDetection = async () => {
     const net = await cocossd.load();
+    setSpeakingAllowed(true); // Enable speech synthesis
     setIsDetecting(true);
     intervalId.current = setInterval(() => {
       detect(net);
     }, 100);
   };
-
+  
   const stopDetection = () => {
+    setSpeakingAllowed(false); // Disable speech synthesis
     setIsDetecting(false);
     clearInterval(intervalId.current);
   };
